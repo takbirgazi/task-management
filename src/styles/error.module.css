@@ -1,0 +1,60 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Added padding for small screens */
+    background-color: #f8f9fa;
+    text-align: center;
+}
+
+.title {
+    font-size: 6rem;
+    font-weight: bold;
+    color: #ff6b6b;
+    margin: 0;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    padding: 0 15px;
+    /* Added padding for better spacing */
+}
+
+.homeLink {
+    font-size: 1.2rem;
+    color: #007bff;
+    text-decoration: none;
+    border: 2px solid #007bff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.homeLink:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+/* Media query for screens smaller than 600px (mobile devices) */
+@media (max-width: 600px) {
+    .title {
+        font-size: 4rem;
+        /* Reduce font size for smaller screens */
+    }
+
+    .message {
+        font-size: 1.2rem;
+        /* Reduce font size */
+    }
+
+    .homeLink {
+        font-size: 1rem;
+        /* Reduce button font size */
+        padding: 8px 16px;
+        /* Adjust padding */
+    }
+}
