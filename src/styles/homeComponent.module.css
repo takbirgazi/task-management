@@ -5,30 +5,32 @@
     align-items: center;
     padding: 50px;
 }
-.searchAndNewTask{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+
+.SearchAndNewTaskDiv {
+    width: 100%;
 }
-.searchAndNewTask > button, .searchAndNewTask > input{
-    background: transparent;
-    padding: 5px 10px; border-radius: 5px;
-    border: 1px solid gray
-}
-
-
-
-
-
-
 
 
 /* =============================================================== */
 
+/* Responsive */
+@media (max-width:1050px) {
+    .homeCompMainDiv {
+        padding: 30px;
+    }
+
+}
+
+
 /* Mobile Responsive */
-@media (max-width:600px) {
+@media (max-width:750px) {
     .homeCompMainDiv {
         padding: 20px;
+    }
+}
+
+@media (max-width:500px) {
+    .homeCompMainDiv {
+        padding: 10px;
     }
 }

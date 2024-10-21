@@ -1,0 +1,94 @@
+.searchAndNewTask {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.searchAndNewTask button,
+.searchAndNewTask input {
+    background: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    color: black;
+    margin: 5px;
+    outline: none;
+}
+
+.searchAndNewTask input::placeholder {
+    color: #2f2f2f;
+}
+
+.filterAndNewTask {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.filterAndNewTask select {
+    background: transparent;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    color: black;
+    margin: 5px;
+    outline: none;
+}
+
+.filterAndNewTask select option {
+    color: gray;
+}
+
+.filterAndNewTask input {
+    width: fit-content;
+}
+
+
+
+
+
+/* =============================================================== */
+
+/* Responsive */
+@media (max-width:1050px) {
+    .searchAndNewTask {
+        flex-direction: column;
+    }
+
+}
+
+
+/* Mobile Responsive */
+@media (max-width:750px) {
+    .searchAndNewTask {
+        flex-direction: column;
+    }
+
+    .searchAndNewTask button,
+    .searchAndNewTask input {
+        padding: 5px;
+    }
+
+    .filterAndNewTask select {
+        padding: 5px;
+    }
+
+}
+
+@media (max-width:500px) {
+    .searchAndNewTask {
+        flex-direction: column;
+    }
+
+    .filterAndNewTask {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .searchAndNewTask {
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+}
