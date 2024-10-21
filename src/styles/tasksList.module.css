@@ -1,0 +1,63 @@
+.tasksList {
+    margin: 5px;
+}
+
+.tasksList h4 {
+    text-align: center;
+}
+
+.statusLow {
+    background: rgba(0, 128, 0, 0.685);
+}
+
+.statusMedium {
+    background: rgba(255, 255, 0, 0.685);
+}
+
+.statusHigh {
+    background: rgba(255, 0, 0, 0.685);
+}
+
+/* TaskTable.module.css */
+
+.tableContainer {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.responsiveTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: left;
+}
+
+.responsiveTable td {
+    padding: 12px 15px;
+    color: black;
+}
+
+.responsiveTable th {
+    background-color: #3b5fa3;
+    color: #e7e8ef;
+    padding: 15px;
+}
+
+
+
+
+/* ==================================================================*/
+
+/* Responsive Styles */
+@media (max-width: 750px) {
+    .responsiveTable tr th {
+        font-size: 14px;
+
+    }
+
+    .responsiveTable tr td {
+        font-size: 12px;
+
+    }
+}
