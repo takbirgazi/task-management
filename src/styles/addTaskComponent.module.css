@@ -1,0 +1,114 @@
+/* CreateTask.module.css */
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: #000;
+}
+
+.input,
+.textarea,
+.select {
+    width: calc(100% - 22px);
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #757582;
+    border-radius: 5px;
+    background: transparent;
+    outline: none;
+}
+
+.select {
+    width: 100%;
+}
+
+.textarea {
+    height: 120px;
+    resize: none;
+}
+
+.cancelButton {
+    width: fit-content;
+    padding: 10px;
+    font-size: 16px;
+    background: white;
+    color: black;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.submitButton {
+    width: fit-content;
+    padding: 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submitButton:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+}
+
+.successMessage,
+.errorMessage {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.successMessage {
+    color: green;
+}
+
+.errorMessage {
+    color: red;
+}
+
+/* Responsive Styles */
+@media (max-width: 750px) {
+    .container {
+        padding: 10px;
+    }
+
+    .container h1 {
+        font-size: 30px;
+    }
+
+    .input,
+    .textarea {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .submitButton {
+        padding: 8px;
+        font-size: 14px;
+    }
+}

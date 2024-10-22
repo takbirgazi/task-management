@@ -1,5 +1,6 @@
 "use client"
 import styles from "@/styles/creationComponent.module.css"
+import Link from "next/link";
 const CreationComponent = () => {
     return (
         <div className={styles.searchAndNewTask}>
@@ -11,16 +12,16 @@ const CreationComponent = () => {
             <div className={styles.filterAndNewTask}>
                 <div>
                     <select name="" id="">
-                        <option value="Status">All</option>
-                        <option value="Status">Completed</option>
-                        <option value="Status">Pending</option>
+                        <option value="All">All</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Pending">Pending</option>
                     </select>
                     <select name="" id="" >
-                        <option value="Status">Low</option>
-                        <option value="Status">Medium</option>
-                        <option value="Status">High</option>
+                        <option value="Low">Low</option>
+                        <option value="Medium">Medium</option>
+                        <option value="High">High</option>
                     </select>
-                    <button>New Task</button>
+                    <Link href="/addtask" className={styles.addNewTask}>New Task</Link>
                 </div>
             </div>
         </div>
