@@ -5,7 +5,7 @@ const CreationComponent = () => {
         <div className={styles.searchAndNewTask}>
             <div>
                 <input type="text" placeholder="Search..." />
-                <input type="text" placeholder="Tags" />
+                <input type="text" placeholder="Tags..." />
             </div>
 
             <div className={styles.filterAndNewTask}>

@@ -2,7 +2,7 @@
     margin: 5px;
 }
 
-.tasksList h4 {
+.tasksList h3 {
     text-align: center;
 }
 
@@ -16,6 +16,14 @@
 
 .statusHigh {
     background: rgba(255, 0, 0, 0.685);
+}
+
+.completeTask {
+    filter: grayscale(55%);
+}
+
+.completeTask>td:first-child {
+    text-decoration: line-through;
 }
 
 /* TaskTable.module.css */
@@ -36,12 +44,39 @@
 .responsiveTable td {
     padding: 12px 15px;
     color: black;
+    border-bottom: 1px solid gray;
 }
 
 .responsiveTable th {
     background-color: #3b5fa3;
     color: #e7e8ef;
     padding: 15px;
+}
+
+.actionButtonTd {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.actionButtonTd button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    height: 30px;
+    width: 30px;
+    overflow: hidden;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-image: linear-gradient(120deg, #f8f8f8 0%, #d2dfec 100%);
+}
+
+.actionButtonTd .actionBtn {
+    width: 15px;
+    height: 15px;
 }
 
 
@@ -60,4 +95,10 @@
         font-size: 12px;
 
     }
+
+    /* .actionButtonTd {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    } */
 }
