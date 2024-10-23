@@ -1,15 +1,28 @@
-"use client"
+"use client";
 
-import styles from "@/styles/tasksList.module.css"
+import styles from "@/styles/tasksList.module.css";
 import TaskTable from "./TaskTable";
+import { useEffect, useState } from "react";
+
 const TasksList = () => {
-    const tasks = [
-        { id: 1, title: 'Task 1', priority: "High", description: 'Description 1', completed: false, dueDate: '2024-11-01' },
-        { id: 2, title: 'Task 2', priority: "Low", description: 'Description 2', completed: true, dueDate: '2024-10-22' },
-        { id: 3, title: 'loremloremloremloremloremloremloremloremloremloremloremlorem', priority: "Medium", description: 'Description 2', completed: true, dueDate: '2024-10-22' },
-        { id: 4, title: 'Task 2', priority: "Low", description: 'loremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremloremlorem', completed: true, dueDate: '2024-10-22' },
-        { id: 5, title: 'Task 2', priority: "High", description: 'Description 2', completed: true, dueDate: '2024-10-22' },
-    ];
+    const [completedTasks, setCompletedTasks] = useState([]);
+    const [incompleteTasks, setIncompleteTasks] = useState([]);
+
+    useEffect(() => {
+        fetch("/api/tasks")
+            .then(res => res.json())
+            .then(data => {
+                // Separate the tasks based on the `completed` status
+                const completed = data.filter(task => task.completed === true);
+                const incomplete = data.filter(task => task.completed === false);
+
+                // Update state for both completed and incomplete tasks
+                setCompletedTasks(completed);
+                setIncompleteTasks(incomplete);
+            })
+            .catch(error => console.error('Error fetching tasks:', error));
+    }, []);
+
     return (
         <div className={styles.tasksList}>
             <div>
@@ -26,9 +39,10 @@ const TasksList = () => {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    {/* Table Data Showing Here  */}
-                    <TaskTable tasks={tasks} />
-                    <TaskTable tasks={tasks} />
+                    {/* Incomplete Tasks Table */}
+                    <TaskTable tasks={incompleteTasks} setTasks={setIncompleteTasks} />
+                    {/* Completed Tasks Table */}
+                    <TaskTable tasks={completedTasks} setTasks={setCompletedTasks} />
                 </table>
             </div>
         </div>

@@ -1,9 +1,9 @@
-import run from '@/backend-services/config/db';
+import clientPromise from '@/backend-services/config/db';
 
 // GET all tasks
 export async function GET(request) {
   try {
-    const client = await run;
+    const client = await clientPromise;
     const db = client.db('taskManagementDB');
     const tasks = await db.collection('tasks').find({}).toArray();
     return new Response(JSON.stringify(tasks), { status: 200 });

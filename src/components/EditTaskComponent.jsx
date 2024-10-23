@@ -1,16 +1,17 @@
 import { useState } from 'react';
-import styles from "@/styles/addTaskComponent.module.css";
+import styles from "@/styles/addTaskComponent.module.css"; // Design Will be same
 import Link from 'next/link';
 
-const AddTaskComponent = () => {
+const EditTaskComponent = ({singleTask}) => {
+
     const [task, setTask] = useState({
-        title: '',
-        description: '',
-        dueDate: '',
-        tags: '',
-        category: 'Work',
-        priorityLevel: 'Low',
-        completed: false,
+        title: singleTask?.title,
+        description: singleTask?.description,
+        dueDate: singleTask?.dueDate,
+        tags: singleTask?.tags,
+        category: singleTask?.category,
+        priorityLevel: singleTask?.priorityLevel,
+        completed: singleTask?.completed,
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
@@ -56,9 +57,10 @@ const AddTaskComponent = () => {
         setIsSubmitting(false);
     };
 
+
     return (
         <div className={styles.container}>
-            <h1>Create a New Task</h1>
+            <h1>Update Your Task</h1>
             {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
             {/* {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} */}
 
@@ -71,9 +73,7 @@ const AddTaskComponent = () => {
                         name="title"
                         value={task.title}
                         onChange={handleChange}
-                        required
                         className={styles.input}
-                        placeholder="Write Task Name"
                     />
                 </div>
 
@@ -86,7 +86,6 @@ const AddTaskComponent = () => {
                         onChange={handleChange}
                         required
                         className={styles.textarea}
-                        placeholder="Write Task Description"
                     ></textarea>
                 </div>
 
@@ -113,7 +112,6 @@ const AddTaskComponent = () => {
                         onChange={handleChange}
                         required
                         className={styles.input}
-                        placeholder="Write Your Tags"
                     />
                 </div>
 
@@ -165,7 +163,7 @@ const AddTaskComponent = () => {
                 <div>
                     <Link href="/" className={styles.cancelButton}>Cancel</Link>
                     <button type="submit" className={styles.submitButton} disabled={isSubmitting}>
-                        {isSubmitting ? 'Creating...' : 'Create Task'}
+                        {isSubmitting ? 'Updating...' : 'Update Task'}
                     </button>
                 </div>
             </form>
@@ -173,4 +171,4 @@ const AddTaskComponent = () => {
     );
 };
 
-export default AddTaskComponent;
+export default EditTaskComponent;

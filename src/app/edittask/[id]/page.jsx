@@ -1,10 +1,10 @@
 "use client"
 
+import EditTaskComponent from '@/components/EditTaskComponent';
 import "@/styles/global.css";
-import { useEffect, useState } from "react";
-import SingleTaskComponent from "@/components/SingleTaskComponent";
+import { useEffect, useState } from 'react';
 
-const SingleTask = ({ params }) => {
+const EditTask = ({ params }) => {
     const taskId = params.id;
     const [task, setTask] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -43,9 +43,9 @@ const SingleTask = ({ params }) => {
 
     return (
         <main className="bodyBackground">
-            <SingleTaskComponent task={task} />
+            <EditTaskComponent singleTask={task} />
         </main>
     );
 };
 
-export default SingleTask;
+export default EditTask;

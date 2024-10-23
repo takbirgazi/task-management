@@ -1,42 +1,108 @@
 .container {
-  margin: 0 auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.taskBox {
-  border: 1px solid gray;
+  flex-direction: column;
   padding: 20px;
+  border-radius: 10px;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  transition: all 0.3s ease-in-out;
 }
 
-.title {
-  font-size: 24px;
-  margin-bottom: 15px;
+.titleName h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
   color: #333;
 }
 
-.description {
-  font-size: 16px;
-  margin-bottom: 10px;
-  color: #555;
-}
-
+.status,
 .dueDate,
-.status {
+.description,
+.category,
+.tags {
+  margin-top: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.container p {
   font-size: 14px;
-  margin-bottom: 5px;
-  color: #777;
+  font-weight: normal;
 }
 
-.loading {
-  text-align: center;
-  font-size: 18px;
-  color: #555;
+.status p,
+.dueDate p,
+.description p,
+.category p,
+.tags p {
+  font-weight: 600;
 }
 
-.error {
-  color: red;
-  text-align: center;
-  font-size: 18px;
+.homeBtn {
+  padding: 8px 12px;
+  background: green;
+  display: flex;
+  border-radius: 4px;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 30px 0px;
+}
+
+.homeBtn .button {
+  color: white;
+}
+
+.statusLow {
+  color: rgba(0, 128, 0, 0.685);
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 128, 0, 0.685);
+}
+
+.statusMedium {
+  color: rgba(255, 255, 0, 0.685);
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 0, 0.685);
+}
+
+.statusHigh {
+  color: rgba(255, 0, 0, 0.685);
+  width: fit-content;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 0, 0, 0.685);
+}
+
+/* ======================================================= */
+/* Responsive Design */
+@media (max-width: 750px) {
+  .container {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .titleName h2 {
+    font-size: 1.3rem;
+  }
+
+  .container p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  .titleName h2 {
+    font-size: 1.2rem;
+  }
+
+  .container p {
+    font-size: 0.8rem;
+  }
 }
