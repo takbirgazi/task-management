@@ -91,6 +91,23 @@
     color: red;
 }
 
+.categoryRadioBtn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.categoryRadioBtn>div {
+    gap: 3px;
+    align-items: stretch;
+}
+
+.categoryRadioBtn label,
+.categoryRadioBtn input {
+    padding: 0;
+    margin: 0;
+}
+
 /* Responsive Styles */
 @media (max-width: 750px) {
     .container {

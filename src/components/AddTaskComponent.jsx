@@ -91,17 +91,31 @@ const AddTaskComponent = () => {
                 </div>
 
                 <div className={styles.formGroup}>
-                    <label htmlFor="categoryTags">Category Tags</label>
+                    <label htmlFor="tags">Category Tags</label>
                     <input
                         type="text"
-                        id="categoryTags"
-                        name="categoryTags"
-                        value={task.categoryTags}
+                        id="tags"
+                        name="tags"
+                        value={task.tags}
                         onChange={handleChange}
                         required
                         className={styles.input}
-                        placeholder='Write Task Category Tags'
+                        placeholder='Write Your Tags'
                     />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="">Category</label>
+                    <div className={styles.categoryRadioBtn}>
+                        <div className={styles.categoryRadioBtn}>
+                            <input type="radio" id="personal" name="category" value="personal" />
+                            <label htmlFor="personal">Personal</label>
+                        </div>
+                        <div className={styles.categoryRadioBtn}>
+                            <input type="radio" id="work" name="category" value="work" />
+                            <label htmlFor="work">Work</label>
+                        </div>
+                    </div>
+
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="priorityLevel">Priority Level</label>

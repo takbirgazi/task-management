@@ -5,6 +5,7 @@ import deleteIcon from "@/public/icons/delete.png"
 import editIcon from "@/public/icons/edit.png"
 import viewIcon from "@/public/icons/view.png"
 import completeIcon from "@/public/icons/complete.png"
+import Link from 'next/link';
 
 const TaskTable = ({ tasks }) => {
     return (
@@ -34,25 +35,29 @@ const TaskTable = ({ tasks }) => {
                     </td>
                     <td>
                         <div className={styles.actionButtonTd}>
-                            <button title='View'>
-                                <figure>
-                                    <Image className={styles.actionBtn} src={viewIcon} alt='View' />
-                                </figure>
+                            <button className={styles.button}>
+                                <Link href={`/task/${task.id}`} title='View'>
+                                    <figure>
+                                        <Image className={styles.actionBtn} src={viewIcon} alt='View' />
+                                    </figure>
+                                </Link>
                             </button>
-                            <button title='Edit'>
-                                <figure>
-                                    <Image className={styles.actionBtn} src={editIcon} alt='Edit' />
-                                </figure>
+                            <button className={styles.button}>
+                                <Link href="/edittask" title='Edit'>
+                                    <figure>
+                                        <Image className={styles.actionBtn} src={editIcon} alt='Edit' />
+                                    </figure>
+                                </Link>
                             </button>
-                            <button title='Delete'>
+                            <button title='Delete' className={styles.button}>
                                 <figure>
                                     <Image className={styles.actionBtn} src={deleteIcon} alt='Delete' />
                                 </figure>
                             </button>
                             {
-                                task?.completed ? null : <button title='Mark as Complete'>
+                                task?.completed ? null : <button title='Mark as Complete' className={styles.button}>
                                     <figure>
-                                        <Image className={styles.actionBtn} src={completeIcon} alt='Delete' />
+                                        <Image className={styles.actionBtn} src={completeIcon} alt='Mark as Complete' />
                                     </figure>
                                 </button>
                             }
