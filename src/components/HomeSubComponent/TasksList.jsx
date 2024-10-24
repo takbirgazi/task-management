@@ -49,7 +49,7 @@ const TasksList = () => {
                 setPriorityFilter={setPriorityFilter}
             />
 
-            <div>
+            <div className={styles.taskHeading}>
                 <h3>Your Tasks</h3>
             </div>
             <div className={styles.tableContainer}>

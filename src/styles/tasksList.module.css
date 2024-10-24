@@ -2,8 +2,9 @@
     margin: 5px;
 }
 
-.tasksList h3 {
+.taskHeading h3 {
     text-align: center;
+    margin: 25px 0px;
 }
 
 .statusLow {

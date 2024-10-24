@@ -1,22 +1,30 @@
 "use client";
 import styles from "@/styles/creationComponent.module.css";
+import Image from "next/image";
 import Link from "next/link";
+import reloadIcon from "@/public/icons/reload.png";
 
 const CreationComponent = ({ search, setSearch, tags, setTags, statusFilter, setStatusFilter, priorityFilter, setPriorityFilter }) => {
+
+    const handleReload = (e) => {
+        e.preventDefault();
+        window.location.reload();
+    }
+
     return (
         <div className={styles.searchAndNewTask}>
             <div>
-                <input 
-                    type="text" 
-                    placeholder="Search..." 
-                    value={search} 
-                    onChange={(e) => setSearch(e.target.value)} 
+                <input
+                    type="text"
+                    placeholder="Search..."
+                    value={search}
+                    onChange={(e) => setSearch(e.target.value)}
                 />
-                <input 
-                    type="text" 
-                    placeholder="Tags..." 
-                    value={tags} 
-                    onChange={(e) => setTags(e.target.value)} 
+                <input
+                    type="text"
+                    placeholder="Tags..."
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
                 />
             </div>
 
@@ -33,7 +41,15 @@ const CreationComponent = ({ search, setSearch, tags, setTags, statusFilter, set
                         <option value="Medium">Medium</option>
                         <option value="High">High</option>
                     </select>
+
+                </div>
+                <div className={styles.newTaskAndReload}>
                     <Link href="/addtask" className={styles.addNewTask}>New Task</Link>
+                    <button onClick={handleReload} title="Reload Page">
+                        <figure>
+                            <Image className={styles.actionBtn} src={reloadIcon} alt='Reload' />
+                        </figure>
+                    </button>
                 </div>
             </div>
         </div>
