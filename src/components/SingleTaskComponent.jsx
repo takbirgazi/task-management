@@ -1,3 +1,5 @@
+"use client"
+
 import styles from "@/styles/singleTaskComponent.module.css";
 import Link from "next/link";
 

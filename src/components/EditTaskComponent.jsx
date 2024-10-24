@@ -1,21 +1,35 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "@/styles/addTaskComponent.module.css"; // Design Will be same
 import Link from 'next/link';
 
-const EditTaskComponent = ({singleTask}) => {
-
+const EditTaskComponent = ({ singleTask }) => {
     const [task, setTask] = useState({
-        title: singleTask?.title,
-        description: singleTask?.description,
-        dueDate: singleTask?.dueDate,
-        tags: singleTask?.tags,
-        category: singleTask?.category,
-        priorityLevel: singleTask?.priorityLevel,
-        completed: singleTask?.completed,
+        title: singleTask?.title || '',
+        description: singleTask?.description || '',
+        dueDate: singleTask?.dueDate || '',
+        tags: singleTask?.tags || '',
+        category: singleTask?.category || 'Work',
+        priorityLevel: singleTask?.priorityLevel || 'Low',
+        completed: singleTask?.completed || false,
     });
+
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [successMessage, setSuccessMessage] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+
+    useEffect(() => {
+        if (singleTask) {
+            setTask({
+                title: singleTask.title,
+                description: singleTask.description,
+                dueDate: singleTask.dueDate,
+                tags: singleTask.tags,
+                category: singleTask.category,
+                priorityLevel: singleTask.priorityLevel,
+                completed: singleTask.completed,
+            });
+        }
+    }, [singleTask]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -25,10 +39,12 @@ const EditTaskComponent = ({singleTask}) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setErrorMessage('');
+        setSuccessMessage('');
 
         try {
-            const response = await fetch('/api/tasks', {
-                method: 'POST',
+            const response = await fetch(`/api/tasks/${singleTask._id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
@@ -36,33 +52,24 @@ const EditTaskComponent = ({singleTask}) => {
             });
 
             const data = await response.json();
+
             if (response.ok) {
-                setSuccessMessage('Task created successfully!');
-                setTask({
-                    title: '',
-                    description: '',
-                    dueDate: '',
-                    tags: '',
-                    category: 'Work',
-                    priorityLevel: 'Low',
-                    completed: false,
-                });
+                setSuccessMessage('Task updated successfully!');
             } else {
                 setErrorMessage(data.message || 'Something went wrong');
             }
         } catch (error) {
-            setErrorMessage('Failed to create task. Please try again.');
+            setErrorMessage('Failed to update task. Please try again.');
         }
 
         setIsSubmitting(false);
     };
 
-
     return (
         <div className={styles.container}>
             <h1>Update Your Task</h1>
             {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
-            {/* {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>} */}
+            {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
 
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.formGroup}>
@@ -73,6 +80,7 @@ const EditTaskComponent = ({singleTask}) => {
                         name="title"
                         value={task.title}
                         onChange={handleChange}
+                        required
                         className={styles.input}
                     />
                 </div>
@@ -95,9 +103,9 @@ const EditTaskComponent = ({singleTask}) => {
                         type="date"
                         id="dueDate"
                         name="dueDate"
-                        required
                         value={task.dueDate}
                         onChange={handleChange}
+                        required
                         className={styles.input}
                     />
                 </div>
@@ -118,9 +126,8 @@ const EditTaskComponent = ({singleTask}) => {
                 <div className={styles.formGroup}>
                     <label htmlFor="category">Category</label>
                     <div className={styles.categoryRadioBtn}>
-                        <div className={styles.categoryRadioBtn}>
+                        <div>
                             <input
-                                required
                                 type="radio"
                                 id="personal"
                                 name="category"
@@ -130,9 +137,8 @@ const EditTaskComponent = ({singleTask}) => {
                             />
                             <label htmlFor="personal">Personal</label>
                         </div>
-                        <div className={styles.categoryRadioBtn}>
+                        <div>
                             <input
-                                required
                                 type="radio"
                                 id="work"
                                 name="category"

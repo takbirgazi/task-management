@@ -63,3 +63,44 @@ export async function DELETE(request, { params }) {
         return new Response(JSON.stringify({ message: 'An error occurred', error: error.message }), { status: 500 });
     }
 }
+
+// PUT to update a task
+export async function PUT(request, { params }) {
+    try {
+        const { id } = params; // Extract the task ID from route parameters
+        const client = await clientPromise;
+        const db = client.db('taskManagementDB');
+
+        // Parse the request body to get the updated task data
+        const body = await request.json();
+        const { title, description, dueDate, tags, category, priorityLevel, completed } = body;
+
+        // Update the task in the database
+        const result = await db.collection('tasks').updateOne(
+            { _id: new ObjectId(id) }, // Find task by its ID
+            {
+                $set: {
+                    title,
+                    description,
+                    dueDate,
+                    tags,
+                    category,
+                    priorityLevel,
+                    completed
+                }
+            }
+        );
+
+        // Check if the task was found and updated
+        if (result.matchedCount === 0) {
+            return new Response(JSON.stringify({ message: 'Task not found' }), { status: 404 });
+        }
+
+        // Return success message if the task was updated
+        return new Response(JSON.stringify({ message: 'Task updated successfully', success: true }), { status: 200 });
+
+    } catch (error) {
+        // Handle unexpected server errors
+        return new Response(JSON.stringify({ message: 'An error occurred', error: error.message }), { status: 500 });
+    }
+}
