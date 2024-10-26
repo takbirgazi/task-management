@@ -75,6 +75,7 @@
 .submitButton:disabled {
     background-color: #ddd;
     cursor: not-allowed;
+    color: #000;
 }
 
 .successMessage,
