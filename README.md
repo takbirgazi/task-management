@@ -1,4 +1,4 @@
-## Task Management - Ena Ema
+## Task Management
 
 *Installation Guide*
 
